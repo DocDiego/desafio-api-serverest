@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "dbad7019-08a2-4507-a2d2-350d93488410",
+		"name": "Users API Tests",
+		"description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48511962",
+		"_collection_link": "https://oppu2com-7331210.postman.co/workspace/Oppu2-Comunica%C3%A7%C3%A3o's-Workspace~4d0c5550-e562-40d5-83f9-22193667b709/collection/48511962-dbad7019-08a2-4507-a2d2-350d93488410?action=share&source=collection_link&creator=48511962"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let json = pm.response.json();\r",
+							"pm.environment.set(\"token\", json.authorization);\r",
+							"\r",
+							"pm.test(\"Validando status = 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validando existencia da authorization no body\", function () {\r",
+							"    pm.expect(json).to.have.property(\"authorization\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"fulano@qa.com\",\r\n  \"password\": \"teste\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

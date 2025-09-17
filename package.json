@@ -1,0 +1,10 @@
+{
+  "name": "testes-api",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "newman run \"Users API Tests.postman_collection.json\" -e \"baseUrl.postman_environment.json\" --reporters cli,junit --reporter-junit-export results.xml"
+  },
+  "devDependencies": {
+    "newman": "^6.0.0"
+  }
+}
